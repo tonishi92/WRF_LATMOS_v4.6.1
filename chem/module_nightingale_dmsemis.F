@@ -1,16 +1,26 @@
-! lm Louis Marelle 2015/4
+! 2018/10/04 Louis Marelle
 ! Compute DMS emissions and add them to chem(:,:,:,p_dms)
-! I developped this for CBMZ_MOSAIC with DMS and SAPRC_MOSAIC with DMS reactions
+! I developed this for CBMZ_MOSAIC with DMS and SAPRC_MOSAIC with DMS reactions
 ! added to KPP, but this should work for any mechanism where DMS is defined in
-! chem. This routines requires that e_dms_oc, the oceanic dms content, is
+! chem. However, if someone tries to use this option with another mechanism I
+! included a call to WRF_FATAL in chemics_init.F.
+! This routines requires that e_dms_oc, the oceanic dms content, is
 ! present in emis_ant (read from the wrfchemi files). This is checked in
-! chem_init
+! chem_init.F
 !
 ! This routine needs dms oceanic content as an input, read in wrfchemi files
 ! (emis_ant) for now. This oceanic content can be overwritten by another
 ! value here if needed (dms_ocean_sfc), see below.
 !
 ! This module is based on module_cbmz_addemiss.F
+!
+! This code was developped for the following publication, also showing tests in
+! the Arctic:
+! Marelle, L., J.-C. Raut, K. S. Law, L. K. Berg, J. D. Fast, R. C. Easter, M.
+! Shrivastava, and J. L. Thomas (2017), Improvements to the WRF-Chem 3.5.1 model
+! for quasi- hemispheric simulations of aerosols and ozone in the Arctic,
+! Geoscientific Model Devel- opment, 10(10), 3661–3677,
+! doi:10.5194/gmd-10-3661-2017.
 
 MODULE module_nightingale_dmsemis
 
