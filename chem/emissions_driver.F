@@ -66,6 +66,9 @@ CONTAINS
          ! stuff for LNOx emissions
          ht, refl_10cm,                                                    &
          ic_flashrate, cg_flashrate,                                       &
+!lm
+         cldfra_cup, htop,                                                 &
+!lm
          ! end stuff for LNOx emissions
          ! stuff for aircraft emissions
          emis_aircraft,                                                    &
@@ -345,6 +348,10 @@ CONTAINS
 ! stuff for lightning NOx
      REAL, DIMENSION( ims:ime,          jms:jme ),           INTENT(IN   ) :: ht, ic_flashrate, cg_flashrate
      REAL, DIMENSION( ims:ime, kms:kme, jms:jme ),           INTENT(IN   ) :: refl_10cm
+!lm
+     REAL, DIMENSION( ims:ime, kms:kme, jms:jme ),           INTENT(IN   ) :: cldfra_cup
+     REAL, DIMENSION( ims:ime,          jms:jme ),           INTENT(IN   ) :: htop
+!lm
 ! end stuff for lightning NOx
 
 ! stuff for online NH3  "WRF-NH3-CHEM" modified by renchuanhua
@@ -1804,6 +1811,9 @@ real, save :: freq_industry(24)    = &
             ltng_temp_upper=config_flags%ltng_temp_upper,                 &
             ltng_temp_lower=config_flags%ltng_temp_lower,                 &
             cellcount_method=config_flags%cellcount_method,               &
+!lm
+            cldfra_cup=cldfra_cup, htop=htop,                             &
+!lm
           ! Order dependent args for domain, mem, and tile dims
             ids=ids, ide=ide, jds=jds, jde=jde, kds=kds, kde=kde,         &
             ims=ims, ime=ime, jms=jms, jme=jme, kms=kms, kme=kme,         &
