@@ -494,9 +494,10 @@ call wrf_message("**************************************************************
    endif
 
 !lm Add this condition on emiss_opt for Nightingale DMS emissions
-   if ( config_flags%dmsemis_opt == 2 .and. (config_flags%emiss_opt /= 4 .and. config_flags%emiss_opt /= 13) ) then
+   if ( config_flags%dmsemis_opt == 2 .and. (config_flags%emiss_opt /= 4 .and. config_flags%emiss_opt /= 8 &
+                                          .and. config_flags%emiss_opt /= 10 .and. config_flags%emiss_opt /= 13) ) then
       call wrf_error_fatal (15,'chemics_init: error, nightingale_dmsemis (dmsemis_opt = 2) &
-                              requires e_dms_oc to be defined in emis_ant (emiss_opt = 4 or 13)')
+                              requires e_dms_oc to be defined in emis_ant (emiss_opt = 4, 8, 10 or 13)')
    endif
 !lm
 
@@ -566,11 +567,13 @@ call wrf_message("**************************************************************
 !lm For now, do not allow dmsemis_opt=2 for untested mechanisms.
     IF(config_flags%dmsemis_opt == 2) THEN
         IF(config_flags%chem_opt == SAPRC99_MOSAIC_8BIN_VBS2_AQ_KPP .or. &
+           config_flags%chem_opt == MOZART_MOSAIC_4BIN_AQ_KPP .or. &
            config_flags%chem_opt == CBMZ_MOSAIC_DMS_8BIN_AQ) THEN
            call wrf_debug( 15, 'Using the DMS emission scheme for MOSAIC')
         ELSE
            message_txt = "chemics_init.F: ERROR, DMSEMIS_OPT == 2 is currently only allowed with &
-                          tested mechanisms SAPRC99_MOSAIC_8BIN_VBS2_AQ_KPP and CBMZ_MOSAIC_DMS_8BIN_AQ.&
+                          tested mechanisms SAPRC99_MOSAIC_8BIN_VBS2_AQ_KPP, &
+                          MOZART_MOSAIC_4BIN_AQ_KPP and CBMZ_MOSAIC_DMS_8BIN_AQ.&
                           In order to use this option with another mechanism, please modify chemics_init.F"
            call wrf_error_fatal( trim(message_txt) )
         ENDIF
