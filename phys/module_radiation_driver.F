@@ -27,13 +27,18 @@ CONTAINS
               ,solar_opt                                                  &
               ,P8W    ,P ,PI                                              &
               ,p_top                                                      &
+#if ( WRF_CHEM == 1)
 !TO2
               ,radeffect_option                                           &
 !TO2
+#endif
 !lm
 !              ,RADT   ,RA_CALL_OFFSET   &
-              ,RADT ,RADEFFECTDT        &
-              ,RA_CALL_OFFSET           &
+              ,RADT                                                       &
+#if ( WRF_CHEM == 1)
+              ,RADEFFECTDT                                                &
+#endif
+              ,RA_CALL_OFFSET                                             &
 !lm
               ,RHO    ,RLWTOA                                             &
               ,RSWTOA ,RTHRATEN                                           &
@@ -431,7 +436,9 @@ CONTAINS
    USE module_ra_goddard    , ONLY : goddardrad
    USE module_ra_flg        , ONLY : RAD_FLG
 !lm
+#if ( WRF_CHEM == 1)
    USE module_state_description, ONLY:num_chem,p_o3
+#endif
 !lm
 
    USE module_ra_aerosol    , ONLY : calc_aerosol_goddard_sw, &
@@ -656,12 +663,14 @@ CONTAINS
    LOGICAL,      INTENT(IN   )    ::   is_CAMMGMP_used !BSINGH:01/31/2013: Added for CAM5 RRTMG
 
    REAL,      INTENT(IN   )       ::   RADT
+#if ( WRF_CHEM == 1)
 !TO2
    INTEGER,   INTENT(IN   )       ::   RADEFFECT_OPTION
 !TO2
 !lm
    REAL,      INTENT(IN   )       ::   RADEFFECTDT
 !lm
+#endif 
 
    REAL, DIMENSION( ims:ime, jms:jme ),                           &
          INTENT(IN   )  ::                                 XLAND, &
@@ -1390,6 +1399,7 @@ CONTAINS
       radtacttime = curr_secs + radt*60
    END IF
 
+#if ( WRF_CHEM == 1)
 !lm do or not the radiative effect calculations based on radeffectdt (minutes)
 !lm add sanity checks: make sure that weird things can't happen with negative values or 
 !   with values that are not multiple of time steps and output steps
@@ -1414,6 +1424,9 @@ CONTAINS
 !TO2
    IF (radeffect_option .eq. 0) do_radeffect = .false.
 !TO2
+#else 
+   do_radeffect = .false.
+#endif
    IF (do_radeffect) CALL wrf_debug(1, 'radiation_driver, do accumulated radiative forcing calcs.')
 !lm
    IF ( mp_physics .EQ. nuwrf4icescheme ) THEN
@@ -2143,6 +2156,7 @@ CONTAINS
      ENDIF
 
 !lm
+#if (WRF_CHEM == 1)
      IF ( o3input .EQ. 3 .AND. id .EQ. 1 ) THEN
      do i=its,ite
         do j= jts,jte
@@ -2153,6 +2167,7 @@ CONTAINS
         end do
      end do
      ENDIF
+#endif
 !lm
 
      IF ( PRESENT( AEROD ) ) THEN

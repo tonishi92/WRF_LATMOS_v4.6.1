@@ -278,11 +278,16 @@ BENCH_START(rad_driver_tim)
      &        ,solar_opt=config_flags%solar_diagnostics                              &
      &        ,P8W=grid%p_hyd_w        ,P=grid%p_hyd            ,PI=pi_phy           &
 !TO2
+#if ( WRF_CHEM == 1 )
      &        ,radeffect_option=config_flags%radeffect_option                         &
+#endif
 !TO2
 !lm Add a time step for the output of the radiative effects of O3 and aerosols
 !lm     &        ,RADT=grid%radt          ,RA_CALL_OFFSET=grid%ra_call_offset           &
-     &        ,RADT=grid%radt          ,RADEFFECTDT=grid%radeffectdt                 &
+     &        ,RADT=grid%radt                                                        &
+#if ( WRF_CHEM == 1 )
+     &        ,RADEFFECTDT=grid%radeffectdt                                          &
+#endif
      &        ,RA_CALL_OFFSET=grid%ra_call_offset                                    &
 !lm
      &        ,RHO=grid%rho            ,RLWTOA=grid%rlwtoa                           &

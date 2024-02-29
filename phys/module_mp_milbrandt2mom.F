@@ -2263,7 +2263,7 @@ SUBROUTINE sedi_1D(QX1d,NX1d,cat,DE1d,iDE1d,iDP1d,gamfact1d,epsQ,epsN,dmx,VxMax,
          !! (for alternative [future] ice nucleation parameterizations)
          !   NNUvi=...
          !   QNUvi=...
-
+#if ( WRF_CHEM == 1)
           elseif (primIceNucl==3) then
            !! (CNT with contact angle and contact nucleation)
               if (Si>1.) then
@@ -2365,8 +2365,8 @@ SUBROUTINE sedi_1D(QX1d,NX1d,cat,DE1d,iDE1d,iDP1d,gamfact1d,epsQ,epsN,dmx,VxMax,
                  NuDEPSOR=PODNTEG_DEP !Total cryst. conc. nucleated depos in DT, in cm^-3
                  if (NuDEPSOR.lt.1e-40) NuDEPSOR=1e-40
  1111            continue
-
              end if
+#endif
           endif !if (primIceNucl==1)
 
 !              !immersion nucleation
