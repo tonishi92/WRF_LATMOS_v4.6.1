@@ -8362,7 +8362,9 @@
 !      real(kind=rb), intent(out) :: pvsfu(:)
 
 ! ------- Local -------
-
+!TO2
+      character(len=200) :: msg
+!TO2
       logical :: lrtchkclr(nlayers),lrtchkcld(nlayers)
 
       integer(kind=im)  :: klev
@@ -8606,8 +8608,37 @@
                zf = zgcc(jk) * zgcc(jk)
                zwf = zomcc(jk) * zf
                ztauc(jk) = (1.0_rb - zwf) * ztauc(jk)
-               zomcc(jk) = (zomcc(jk) - zwf) / (1.0_rb - zwf)
-               zgcc (jk) = (zgcc(jk) - zf) / (1.0_rb - zf)
+               !TO2 : some output to check
+               if ( zwf == 1.0 .or. zf == 1.0 ) then  
+               write(msg,'("checking : jk, zf, zwf, zomcc, zgcc, ztauc =",i4,5f8.2)')  &
+                                     jk, zf, zwf, zomcc(jk), zgcc(jk), ztauc(jk)
+               !e.g. output          50, 1., 1.0,     0.00,     1.00,       0.00
+               call wrf_message(msg)
+               endif
+               !TO2 end 
+
+               !TO2 : when zwf = 1.0, it gives a floating invalid error. Apply some algebra to avoid it
+               !TO2 zomcc(jk) = (zomcc(jk) - zwf) / (1.0_rb - zwf)
+               if ( zwf == 1.0 ) then
+                 zomcc(jk) = zgcc(jk) / (1.0_rb + zgcc(jk))
+               else
+                 zomcc(jk) = (zomcc(jk) - zwf) / (1.0_rb - zwf)
+               endif
+               !TO2 end
+               
+               !TO2 : some output to check 
+               if ( zwf == 1.0 .or. zf == 1.0 ) then  
+               write(msg,'("checking : nlayers, laytrop, jk, zf, zwf, zomcc, zgcc, ztauc =",3i4,5f10.2)')  &
+                                     nlayers, laytrop, jk, zf, zwf, zomcc(jk), zgcc(jk), ztauc(jk)
+               !e.g. output          50, 1., 1.0,     0.00,     1.00,       0.00
+               call wrf_message(msg)
+               endif
+               !TO2 end
+
+               !TO2 : some albegra to avoid "floating invalid" error with zf = 1.0
+               !zgcc (jk) = (zgcc(jk) - zf) / (1.0_rb - zf)
+               zgcc (jk) = zgcc(jk) / (1.0_rb + zgcc(jk))
+               !TO2 end
             enddo
 
 
@@ -8618,9 +8649,22 @@
                   ikl=klev+1-jk
                   ztauo(jk) = ztauc(jk) + ptaucmc(ikl,iw)
                   zomco(jk) = ztauc(jk) * zomcc(jk) + ptaucmc(ikl,iw) * pomgcmc(ikl,iw) 
-                  zgco (jk) = (ptaucmc(ikl,iw) * pomgcmc(ikl,iw) * pasycmc(ikl,iw) + &
-                              ztauc(jk) * zomcc(jk) * zgcc(jk)) / zomco(jk)
-                  zomco(jk) = zomco(jk) / ztauo(jk)
+!
+                  !TO2 : for zomco = 0.0, avoid floating invalid operation error
+                  !TO2 zgco (jk) = (ptaucmc(ikl,iw) * pomgcmc(ikl,iw) * pasycmc(ikl,iw) + &
+                  !TO2             ztauc(jk) * zomcc(jk) * zgcc(jk)) / zomco(jk)
+                  !TO2 zomco(jk) = zomco(jk) / ztauo(jk)
+                  if ( zomco(jk) == 0.0 ) then
+                    write(msg,'("checking 2 : jk, laytrop, ztauo, ptaucmc, zomco, zomcc, pomgcmc =",2i4,5f10.2)')  &
+                                     jk, laytrop, ztauo(jk), ptaucmc(ikl,iw), zomco(jk), zomcc(jk), pomgcmc(ikl,iw) 
+                    call wrf_message(msg)
+                    zgco(jk) = 0.0
+                  else
+                    zgco (jk) = (ptaucmc(ikl,iw) * pomgcmc(ikl,iw) * pasycmc(ikl,iw) + &
+                                ztauc(jk) * zomcc(jk) * zgcc(jk)) / zomco(jk)
+                    zomco(jk) = zomco(jk) / ztauo(jk)
+                  endif
+                  !TO2 end
             enddo
 
 ! Total sky optical parameters (if cloud properties not delta scaled)
@@ -8640,8 +8684,18 @@
                   zf = zgco(jk) * zgco(jk)
                   zwf = zomco(jk) * zf
                   ztauo(jk) = (1._rb - zwf) * ztauo(jk)
-                  zomco(jk) = (zomco(jk) - zwf) / (1.0_rb - zwf)
-                  zgco (jk) = (zgco(jk) - zf) / (1.0_rb - zf)
+                  !TO2 : to avoid division by zero 
+                  if ( zomco(jk) /= 1.0 ) then
+                    zomco(jk) = (zomco(jk) - zwf) / (1.0_rb - zwf)
+                  ! else
+                  !   zomco(jk) = 1.0
+                  endif
+                  !TO2 end
+                    
+                  !TO2 : some albegra to avoid "floating invalid" error with zf = 1.0
+                  !zgco (jk) = (zgco(jk) - zf) / (1.0_rb - zf)
+                  zgco (jk) = zgco(jk) / (1.0_rb + zgco(jk))
+                  !TO2 end
             enddo
                endif 
 
@@ -11384,6 +11438,12 @@ CONTAINS
            if(asmaer(ncol,k,nb).ge.1.0) asmaer(ncol,k,nb)=1.0
         endif
       end do ! k
+      !TO2 extrapolation ssaaer, asmaer and tauaer at k = kte+1, otherwise these are not calculated 
+      !    tauaer300, tauaer999 are not defined at k = kte+1 (to be confirmed) 
+      tauaer(ncol,kte+1,nb) = tauaer(ncol,kte,nb)
+      ssaaer(ncol,kte+1,nb) = ssaaer(ncol,kte,nb)
+      asmaer(ncol,kte+1,nb) = asmaer(ncol,kte,nb)
+      !TO2 end
       end do ! nb
 
 !wig beg
@@ -11425,8 +11485,13 @@ CONTAINS
             end do
 
             call wrf_message("Diagnostics 4: k, ssaal, asyal, taual")
-            do k=kts-1,kte
-               write(msg,'(i4,3f8.2)') k, ssaaer(i,k,nb), asmaer(i,k,nb), tauaer(i,k,nb)
+            !TO2 
+            write(msg,'(4i4)') ncol, size(ssaaer, dim=1), size(ssaaer, dim=2), size(ssaaer, dim=3)
+            call wrf_message(msg)
+            !TO2 do k=kts-1,kte
+            do k=kts,kte+1
+               !write(msg,'(i4,3f8.2)') k, ssaaer(i,k,nb), asmaer(i,k,nb), tauaer(i,k,nb)
+               write(msg,'(i4,3f8.2)') k, ssaaer(ncol,k,nb), asmaer(ncol,k,nb), tauaer(ncol,k,nb)
                call wrf_message(msg)
             end do
             call wrf_message("-------------------------")
