@@ -262,6 +262,7 @@ submodules :
 	      \( ! -f module_sf_noahmp_groundwater.F \) -o \( ! -f module_sf_noahmplsm.F \) ] ; then \
 		echo Pulling in NoahMP submodule ; \
 		( cd .. ; git submodule update --init --recursive ) ; \
+                ( cd noahmp ; git am -3 ../CORRECTION-phys-noahmp-src-module_sf_noahmplsm.F.patch ) ; \
 		ln -sf noahmp/drivers/wrf/module_sf_noahmpdrv.F . ; \
 		ln -sf noahmp/src/module_sf_noahmp_glacier.F . ; \
 		ln -sf noahmp/src/module_sf_noahmp_groundwater.F . ; \
