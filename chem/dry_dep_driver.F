@@ -285,6 +285,7 @@ CONTAINS
 
        IF( config_flags%chem_opt /= CHEM_TRACER    .and.                  &
            config_flags%chem_opt /= CHEM_TRACE2    .and.                  &
+           config_flags%chem_opt /= CHEM_TRACE4    .and.                  &
            config_flags%chem_opt /= CO2_TRACER     .and.                  & 
            config_flags%chem_opt /= GHG_TRACER     .and.                  &
            config_flags%chem_opt /= CHEM_VASH      .and.                  &

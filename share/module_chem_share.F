@@ -37,8 +37,13 @@ CONTAINS
         get_last_gas = p_co
 
      case (CHEM_TRACE2)
-        get_last_gas = p_tracer_1
-
+!jcr         get_last_gas = p_tracer_1
+        get_last_gas = p_tracer_ens
+!to2
+     case (CHEM_TRACE4)
+!to be modified
+        get_last_gas = p_tracer_ens
+!to2
      case (GOCART_SIMPLE)
         get_last_gas = p_msa
 

@@ -32,11 +32,11 @@ state    real    ccn5            ikj    misc        1         -      r        "c
 state    real    ccn6            ikj    misc        1         -      r        "ccn6"                "CCN concentration at S=1.0%"   "#/cm3"
 
 # cloud water fractional removal rate needed for wet scavenging
-state    real    qlsink          ikj    misc        1         -      rdu      "qlsink"              "CLOUD WATER SINK"               "/S"
-state    real    precr           ikj    misc        1         -      rdu      "precr"               "RAIN PRECIPITATION RATE"        "KG/M2/S"
-state    real    preci           ikj    misc        1         -      rdu      "preci"               "ICE PRECIPITATION RATE"         "KG/M2/S"
-state    real    precs           ikj    misc        1         -      rdu      "precs"               "SNOW PRECIPITATION RATE"        "KG/M2/S"
-state    real    precg           ikj    misc        1         -      rdu      "precg"               "GRAUPEL PRECIPITATION RATE"     "KG/M2/S"
+state    real    qlsink          ikj    misc        1         -      rhdu      "qlsink"              "CLOUD WATER SINK"               "/S"
+state    real    precr           ikj    misc        1         -      rhdu      "precr"               "RAIN PRECIPITATION RATE"        "KG/M2/S"
+state    real    preci           ikj    misc        1         -      rhdu      "preci"               "ICE PRECIPITATION RATE"         "KG/M2/S"
+state    real    precs           ikj    misc        1         -      rhdu      "precs"               "SNOW PRECIPITATION RATE"        "KG/M2/S"
+state    real    precg           ikj    misc        1         -      rhdu      "precg"               "GRAUPEL PRECIPITATION RATE"     "KG/M2/S"
 
 #
 # Timing variables for chemistry
@@ -63,6 +63,80 @@ state    real    EVAPPROD       ikjf     wetscav_frcing        1         -      
 # Anthropogenic emissions
 #
 state   real     -            i+jf     emis_ant     -         -      -       -                     "Anthropogenic Emissions"         ""
+#TO2
+##
+# Tracer emissions
+#
+# 
+state    real  e_tracer_1           i+jf     emis_ant     1         Z      i5r    "E_TRACER_1"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_2           i+jf     emis_ant     1         Z      i5r    "E_TRACER_2"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_3           i+jf     emis_ant     1         Z      i5r    "E_TRACER_3"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_4           i+jf     emis_ant     1         Z      i5r    "E_TRACER_4"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_5           i+jf     emis_ant     1         Z      i5r    "E_TRACER_5"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_6           i+jf     emis_ant     1         Z      i5r    "E_TRACER_6"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_7           i+jf     emis_ant     1         Z      i5r    "E_TRACER_7"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_8           i+jf     emis_ant     1         Z      i5r    "E_TRACER_8"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_9           i+jf     emis_ant     1         Z      i5r    "E_TRACER_9"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_10           i+jf     emis_ant     1         Z      i5r    "E_TRACER_10"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_11           i+jf     emis_ant     1         Z      i5r    "E_TRACER_11"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_12           i+jf     emis_ant     1         Z      i5r    "E_TRACER_12"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_13           i+jf     emis_ant     1         Z      i5r    "E_TRACER_13"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_14           i+jf     emis_ant     1         Z      i5r    "E_TRACER_14"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_15           i+jf     emis_ant     1         Z      i5r    "E_TRACER_15"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_16           i+jf     emis_ant     1         Z      i5r    "E_TRACER_16"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_17           i+jf     emis_ant     1         Z      i5r    "E_TRACER_17"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_18           i+jf     emis_ant     1         Z      i5r    "E_TRACER_18"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_19           i+jf     emis_ant     1         Z      i5r    "E_TRACER_19"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_20           i+jf     emis_ant     1         Z      i5r    "E_TRACER_20"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_21           i+jf     emis_ant     1         Z      i5r    "E_TRACER_21"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_22           i+jf     emis_ant     1         Z      i5r    "E_TRACER_22"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_23           i+jf     emis_ant     1         Z      i5r    "E_TRACER_23"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_24           i+jf     emis_ant     1         Z      i5r    "E_TRACER_24"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_25           i+jf     emis_ant     1         Z      i5r    "E_TRACER_25"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_26           i+jf     emis_ant     1         Z      i5r    "E_TRACER_26"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_27           i+jf     emis_ant     1         Z      i5r    "E_TRACER_27"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_28           i+jf     emis_ant     1         Z      i5r    "E_TRACER_28"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_29           i+jf     emis_ant     1         Z      i5r    "E_TRACER_29"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_30           i+jf     emis_ant     1         Z      i5r    "E_TRACER_30"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_31           i+jf     emis_ant     1         Z      i5r    "E_TRACER_31"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  e_tracer_32           i+jf     emis_ant     1         Z      i5r    "E_TRACER_32"                "EMISSIONS"          "ug m^-2 sec^-1"
+state    real  ef_tracer_1           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_1"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_2           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_2"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_3           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_3"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_4           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_4"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_5           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_5"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_6           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_6"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_7           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_7"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_8           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_8"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_9           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_9"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_10           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_10"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_11           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_11"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_12           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_12"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_13           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_13"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_14           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_14"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_15           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_15"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_16           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_16"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_17           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_17"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_18           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_18"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_19           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_19"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_20           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_20"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_21           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_21"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_22           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_22"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_23           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_23"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_24           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_24"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_25           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_25"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_26           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_26"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_27           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_27"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_28           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_28"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_29           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_29"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_30           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_30"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_31           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_31"                "EMISSION FLAG"          "0-1"
+state    real  ef_tracer_32           i+jf     emis_ant     1         Z      i5r    "EF_TRACER_32"                "EMISSION FLAG"          "0-1"
+#TO2
+
+
+
+
 state    real  e_iso          i+jf     emis_ant     1         Z      i5r    "E_ISO"               "Isoprene EMISSIONS (Anth. for RADM/RACM, Anth+Bio for CBMZ)"  "mol km^-2 hr^-1"
 state    real  e_so2          i+jf     emis_ant     1         Z      i5r    "E_SO2"               "EMISSIONS"          "mol km^-2 hr^-1"
 state    real  e_no           i+jf     emis_ant     1         Z      i5r    "E_NO"                "EMISSIONS"          "mol km^-2 hr^-1"
@@ -2363,26 +2437,38 @@ state    real  ra19co2      ikjftb      chem        1         -    i0{12}rhusdf=
 
 #tracer variables inside the chem array...for ensemble run or not
 #
-state   real   tracer_1    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_1"             "tracer1    mix ratio"        "ppmv"
-state   real   tracer_2    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_2"             "tracer2    mix ratio"        "ppmv"
-state   real   tracer_3    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_3"             "tracer3    mix ratio"        "ppmv"
-state   real   tracer_4    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_4"             "tracer4    mix ratio"        "ppmv"
-state   real   tracer_5    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_5"             "tracer5    mix ratio"        "ppmv"
-state   real   tracer_6    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_6"             "tracer6    mix ratio"        "ppmv"
-state   real   tracer_7    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_7"             "tracer7    mix ratio"        "ppmv"
-state   real   tracer_8    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_8"             "tracer8    mix ratio"        "ppmv"
-state   real   tracer_9    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_9"             "tracer9    mix ratio"        "ppmv"
-state   real   tracer_10    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_10"             "tracer10    mix ratio"        "ppmv"
-state   real   tracer_11    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_11"             "tracer11    mix ratio"        "ppmv"
-state   real   tracer_12    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_12"             "tracer12    mix ratio"        "ppmv"
-state   real   tracer_13    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_13"             "tracer13    mix ratio"        "ppmv"
-state   real   tracer_14    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_14"             "tracer14    mix ratio"        "ppmv"
-state   real   tracer_15    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_15"             "tracer15    mix ratio"        "ppmv"
-state   real   tracer_16    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_16"             "tracer16    mix ratio"        "ppmv"
-state   real   tracer_17    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_17"             "tracer17    mix ratio"        "ppmv"
-state   real   tracer_18    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_18"             "tracer18    mix ratio"        "ppmv"
-state   real   tracer_19    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_19"             "tracer19    mix ratio"        "ppmv"
-state   real   tracer_20    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_20"             "tracer20    mix ratio"        "ppmv"
+state   real   tracer_1    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_1"             "tracer1    mix ratio"        "ug/kg-dryair"
+state   real   tracer_2    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_2"             "tracer2    mix ratio"        "ug/kg-dryair"
+state   real   tracer_3    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_3"             "tracer3    mix ratio"        "ug/kg-dryair"
+state   real   tracer_4    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_4"             "tracer4    mix ratio"        "ug/kg-dryair"
+state   real   tracer_5    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_5"             "tracer5    mix ratio"        "ug/kg-dryair"
+state   real   tracer_6    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_6"             "tracer6    mix ratio"        "ug/kg-dryair"
+state   real   tracer_7    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_7"             "tracer7    mix ratio"        "ug/kg-dryair"
+state   real   tracer_8    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_8"             "tracer8    mix ratio"        "ug/kg-dryair"
+state   real   tracer_9    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_9"             "tracer9    mix ratio"        "ug/kg-dryair"
+state   real   tracer_10    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_10"             "tracer10    mix ratio"        "ug/kg-dryair"
+state   real   tracer_11    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_11"             "tracer11    mix ratio"        "ug/kg-dryair"
+state   real   tracer_12    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_12"             "tracer12    mix ratio"        "ug/kg-dryair"
+state   real   tracer_13    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_13"             "tracer13    mix ratio"        "ug/kg-dryair"
+state   real   tracer_14    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_14"             "tracer14    mix ratio"        "ug/kg-dryair"
+state   real   tracer_15    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_15"             "tracer15    mix ratio"        "ug/kg-dryair"
+state   real   tracer_16    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_16"             "tracer16    mix ratio"        "ug/kg-dryair"
+state   real   tracer_17    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_17"             "tracer17    mix ratio"        "ug/kg-dryair"
+state   real   tracer_18    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_18"             "tracer18    mix ratio"        "ug/kg-dryair"
+state   real   tracer_19    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_19"             "tracer19    mix ratio"        "ug/kg-dryair"
+state   real   tracer_20    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_20"             "tracer20    mix ratio"        "ug/kg-dryair"
+state   real   tracer_21    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_21"             "tracer21    mix ratio"        "ug/kg-dryair"
+state   real   tracer_22    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_22"             "tracer22    mix ratio"        "ug/kg-dryair"
+state   real   tracer_23    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_23"             "tracer23    mix ratio"        "ug/kg-dryair"
+state   real   tracer_24    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_24"             "tracer24    mix ratio"        "ug/kg-dryair"
+state   real   tracer_25    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_25"             "tracer25    mix ratio"        "ug/kg-dryair"
+state   real   tracer_26    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_26"             "tracer26    mix ratio"        "ug/kg-dryair"
+state   real   tracer_27    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_27"             "tracer27    mix ratio"        "ug/kg-dryair"
+state   real   tracer_28    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_28"             "tracer28    mix ratio"        "ug/kg-dryair"
+state   real   tracer_29    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_29"             "tracer29    mix ratio"        "ug/kg-dryair"
+state   real   tracer_30    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_30"             "tracer30    mix ratio"        "ug/kg-dryair"
+state   real   tracer_31    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_31"             "tracer31    mix ratio"        "ug/kg-dryair"
+state   real   tracer_32    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_32"             "tracer32    mix ratio"        "ug/kg-dryair"
 state   real   tracer_ens    ikjftb   chem        1         -   i0{12}rhusdf=(bdy_interp:dt)  "tracer_ens"             "tracer- ensemble average    mix ratio"        "ppmv"
 
 state   real    -          ikjftb  tracer        1         -     -    -                                       
@@ -4229,6 +4315,7 @@ package   chem_tracer   chem_opt==13                 -             chem:so2,no,a
 #jcr pour les traceurs
 # package   chem_trace2   chem_opt==14                 -             chem:tracer_1
 package   chem_trace2   chem_opt==14                 -             chem:tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9,tracer_10,tracer_11,tracer_12,tracer_13,tracer_14,tracer_15,tracer_16,tracer_17,tracer_18,tracer_19,tracer_20,tracer_ens
+package   chem_trace4   chem_opt==19                 -             chem:tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9,tracer_10,tracer_11,tracer_12,tracer_13,tracer_14,tracer_15,tracer_16,tracer_17,tracer_18,tracer_19,tracer_20,tracer_21,tracer_22,tracer_23,tracer_24,tracer_25,tracer_26,tracer_27,tracer_28,tracer_29,tracer_30,tracer_31,tracer_32,tracer_ens
 package   chem_trace_ens   chem_opt==15              -             chem:tracer_1,tracer_2,tracer_3,tracer_4,tracer_5,tracer_6,tracer_7,tracer_8,tracer_9,tracer_10,tracer_11,tracer_12,tracer_13,tracer_14,tracer_15,tracer_16,tracer_17,tracer_18,tracer_19,tracer_20,tracer_ens
 
 # GHG chem packages, passive tracers
@@ -4378,6 +4465,10 @@ package   eco2            emiss_opt==16                  -             emis_ant:
 package   eghg            emiss_opt==17                  -             emis_ant:e_co2,e_co2tst,e_co,e_cotst,e_ch4,e_ch4tst
 package   ecrimech        emiss_opt==19                   -             emis_ant:e_co,e_no,e_no2,e_so2,e_nh3,e_c2h6,e_c3h8,e_c2h4,e_c3h6,e_c5h8,e_tm123b,e_tm124b,e_tm135b,e_oethtol,e_methtol,e_pethtol,e_dime35eb,e_hcho,e_ch3cho,e_c2h5cho,e_ket,e_mek,e_ch3oh,e_c2h5oh,e_c2h2,e_benzene,e_nc4h10,e_toluene,e_oxyl,e_tbut2ene,e_ch3co2h
 package   ecrimechtno     emiss_opt==20                  -             emis_ant:e_co,e_no,e_no2,e_so2,e_nh3,e_c2h6,e_c3h8,e_c2h4,e_c3h6,e_c5h8,e_tm123b,e_tm124b,e_tm135b,e_oethtol,e_methtol,e_pethtol,e_dime35eb,e_hcho,e_ch3cho,e_c2h5cho,e_ket,e_mek,e_ch3oh,e_c2h5oh,e_c2h2,e_benzene,e_nc4h10,e_toluene,e_oxyl,e_tbut2ene,e_ch3co2h,e_bc_1,e_ec_1_25,e_ec_25_10,e_oc_dom,e_oc_tra,e_oc_25_10,e_pm25,e_oin_25,e_oin_10
+#to2
+#package   etracer     emiss_opt==30                  -             emis_ant:e_tracer_1,e_tracer_2,e_tracer_3,e_tracer_4,e_tracer_5,e_tracer_6,e_tracer_7,e_tracer_8,e_tracer_9,e_tracer_10,e_tracer_11,e_tracer_12,e_tracer_13,e_tracer_14,e_tracer_15,e_tracer_16,e_tracer_17,e_tracer_18,e_tracer_19,e_tracer_20,e_tracer_ens,ef_tracer_1,ef_tracer_2,ef_tracer_3,ef_tracer_4,ef_tracer_5,ef_tracer_6,ef_tracer_7,ef_tracer_8,ef_tracer_9,ef_tracer_10,ef_tracer_11,ef_tracer_12,ef_tracer_13,ef_tracer_14,ef_tracer_15,ef_tracer_16,ef_tracer_17,ef_tracer_18,ef_tracer_19,ef_tracer_20,ef_tracer_ens
+package   etracer     emiss_opt==30                  -             emis_ant:e_tracer_1,e_tracer_2,e_tracer_3,e_tracer_4,e_tracer_5,e_tracer_6,e_tracer_7,e_tracer_8,e_tracer_9,e_tracer_10,e_tracer_11,e_tracer_12,e_tracer_13,e_tracer_14,e_tracer_15,e_tracer_16,e_tracer_17,e_tracer_18,e_tracer_19,e_tracer_20,e_tracer_21,e_tracer_22,e_tracer_23,e_tracer_24,e_tracer_25,e_tracer_26,e_tracer_27,e_tracer_28,e_tracer_29,e_tracer_30,e_tracer_31,e_tracer_32,ef_tracer_1,ef_tracer_2,ef_tracer_3,ef_tracer_4,ef_tracer_5,ef_tracer_6,ef_tracer_7,ef_tracer_8,ef_tracer_9,ef_tracer_10,ef_tracer_11,ef_tracer_12,ef_tracer_13,ef_tracer_14,ef_tracer_15,ef_tracer_16,ef_tracer_17,ef_tracer_18,ef_tracer_19,ef_tracer_20,ef_tracer_21,ef_tracer_22,ef_tracer_23,ef_tracer_24,ef_tracer_25,ef_tracer_26,ef_tracer_27,ef_tracer_28,ef_tracer_29,ef_tracer_30,ef_tracer_31,ef_tracer_32
+#to2
 #
 package   vash    emiss_opt_vol==1                   -             emis_vol:e_vash1,e_vash2,e_vash3,e_vash4,e_vash5,e_vash6,e_vash7,e_vash8,e_vash9,e_vash10
 package   vashso2 emiss_opt_vol==2                   -             emis_vol:e_vash1,e_vash2,e_vash3,e_vash4,e_vash5,e_vash6,e_vash7,e_vash8,e_vash9,e_vash10,e_vso2

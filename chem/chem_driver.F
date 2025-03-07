@@ -708,7 +708,7 @@
      CASE (CB05_SORG_VBS_AQ_KPP)
        CALL wrf_debug(15,'calling cb05_sorg_vbs_aq_kpp from chem_driver')
        haveaer = .true.
-    CASE (CHEM_TRACER,CHEM_TRACE2)
+    CASE (CHEM_TRACER,CHEM_TRACE2,CHEM_TRACE4)
        CALL wrf_debug(15,'tracer mode: only doing emissions and dry dep in chem_driver')
     CASE (CHEM_VOLC)
        CALL wrf_debug(15,'Full Volcanic Ash mode: doing emissions (SO2 + ASH), settling, and subgrid transport in chem_driver')
@@ -1016,6 +1016,7 @@
            config_flags%chem_opt /= CHEM_VOLC_4BIN .and. &
            config_flags%chem_opt /= DUST .and. &
            config_flags%chem_opt /= CHEM_TRACE2 .and. &
+           config_flags%chem_opt /= CHEM_TRACE4 .and. &
            config_flags%chem_opt /= CO2_TRACER  .and. &
            config_flags%chem_opt /= GHG_TRACER ) then
          call wrf_debug(15,'calling optical driver')
@@ -1218,6 +1219,7 @@
            config_flags%chem_opt /= CHEM_VOLC_4BIN .and. &
            config_flags%chem_opt /= DUST .and. &
            config_flags%chem_opt /= CHEM_TRACE2 .and. &
+           config_flags%chem_opt /= CHEM_TRACE4 .and. &
            config_flags%chem_opt /= CO2_TRACER  .and. &
            config_flags%chem_opt /= GHG_TRACER  ) then
          call wrf_debug(15,'calling photolysis driver')
@@ -1491,6 +1493,7 @@
           config_flags%chem_opt /= CHEM_VOLC_4BIN .and. &
           config_flags%chem_opt /= DUST .and. &
           config_flags%chem_opt /= CHEM_TRACE2 .and. &
+          config_flags%chem_opt /= CHEM_TRACE4 .and. &
           config_flags%chem_opt /= CO2_TRACER  .and. &
           config_flags%chem_opt /= GHG_TRACER ) then
 

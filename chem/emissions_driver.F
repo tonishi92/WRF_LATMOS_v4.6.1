@@ -1305,6 +1305,167 @@ real, save :: freq_industry(24)    = &
           end do
        end do
 !jcr
+!to2
+   CASE (CHEM_TRACE4)
+     call wrf_debug(15,'CHEM_TRACE4 is selected ......')
+     !if(config_flags%emiss_opt == 30 ) then
+       do j=jts,jte
+          do i=its,ite
+             do k=kts,min(config_flags%kemit,kte-ksub)
+                !conv = alt(i,k,j)*dtstep/dz8w(i,k,j)
+                !conversion to [ug/kg dry air] per air.
+                !emis_ant : [ug/m2/sec]
+                !
+                !conv     : alt[m3/kg air]
+                !           dstep  [sec]
+                !           dz8w   [m]
+                conv = alt(i,k,j)*dtstep/(dz8w(i,k,j))
+                chem(i,k,j,p_tracer_1)  = chem(i,k,j,p_tracer_1)         &
+                     +emis_ant(i,k,j,p_e_tracer_1)*conv
+                chem(i,k,j,p_tracer_2)  = chem(i,k,j,p_tracer_2)         &
+                     +emis_ant(i,k,j,p_e_tracer_2)*conv
+                chem(i,k,j,p_tracer_3)  = chem(i,k,j,p_tracer_3)         &
+                     +emis_ant(i,k,j,p_e_tracer_3)*conv
+                chem(i,k,j,p_tracer_4)  = chem(i,k,j,p_tracer_4)         &
+                     +emis_ant(i,k,j,p_e_tracer_4)*conv
+                chem(i,k,j,p_tracer_5)  = chem(i,k,j,p_tracer_5)         &
+                     +emis_ant(i,k,j,p_e_tracer_5)*conv
+                chem(i,k,j,p_tracer_6)  = chem(i,k,j,p_tracer_6)         &
+                     +emis_ant(i,k,j,p_e_tracer_6)*conv
+                chem(i,k,j,p_tracer_7)  = chem(i,k,j,p_tracer_7)         &
+                     +emis_ant(i,k,j,p_e_tracer_7)*conv
+                chem(i,k,j,p_tracer_8)  = chem(i,k,j,p_tracer_8)         &
+                     +emis_ant(i,k,j,p_e_tracer_8)*conv
+                chem(i,k,j,p_tracer_9)  = chem(i,k,j,p_tracer_9)         &
+                     +emis_ant(i,k,j,p_e_tracer_9)*conv
+                chem(i,k,j,p_tracer_10)  = chem(i,k,j,p_tracer_10)       &
+                     +emis_ant(i,k,j,p_e_tracer_10)*conv
+                chem(i,k,j,p_tracer_11)  = chem(i,k,j,p_tracer_11)       &
+                     +emis_ant(i,k,j,p_e_tracer_11)*conv
+                chem(i,k,j,p_tracer_12)  = chem(i,k,j,p_tracer_12)       &
+                     +emis_ant(i,k,j,p_e_tracer_12)*conv
+                chem(i,k,j,p_tracer_13)  = chem(i,k,j,p_tracer_13)       &
+                     +emis_ant(i,k,j,p_e_tracer_13)*conv
+                chem(i,k,j,p_tracer_14)  = chem(i,k,j,p_tracer_14)       &
+                     +emis_ant(i,k,j,p_e_tracer_14)*conv
+                chem(i,k,j,p_tracer_15)  = chem(i,k,j,p_tracer_15)       &
+                     +emis_ant(i,k,j,p_e_tracer_15)*conv
+                chem(i,k,j,p_tracer_16)  = chem(i,k,j,p_tracer_16)       &
+                     +emis_ant(i,k,j,p_e_tracer_16)*conv
+                chem(i,k,j,p_tracer_17)  = chem(i,k,j,p_tracer_17)       &
+                     +emis_ant(i,k,j,p_e_tracer_17)*conv
+                chem(i,k,j,p_tracer_18)  = chem(i,k,j,p_tracer_18)       &
+                     +emis_ant(i,k,j,p_e_tracer_18)*conv
+                chem(i,k,j,p_tracer_19)  = chem(i,k,j,p_tracer_19)       &
+                     +emis_ant(i,k,j,p_e_tracer_19)*conv
+                chem(i,k,j,p_tracer_20)  = chem(i,k,j,p_tracer_20)       &
+                     +emis_ant(i,k,j,p_e_tracer_20)*conv
+                chem(i,k,j,p_tracer_21)  = chem(i,k,j,p_tracer_21)       &
+                     +emis_ant(i,k,j,p_e_tracer_21)*conv
+                chem(i,k,j,p_tracer_22)  = chem(i,k,j,p_tracer_22)       &
+                     +emis_ant(i,k,j,p_e_tracer_22)*conv
+                chem(i,k,j,p_tracer_23)  = chem(i,k,j,p_tracer_23)       &
+                     +emis_ant(i,k,j,p_e_tracer_23)*conv
+                chem(i,k,j,p_tracer_24)  = chem(i,k,j,p_tracer_24)       &
+                     +emis_ant(i,k,j,p_e_tracer_24)*conv
+                chem(i,k,j,p_tracer_25)  = chem(i,k,j,p_tracer_25)       &
+                     +emis_ant(i,k,j,p_e_tracer_25)*conv
+                chem(i,k,j,p_tracer_26)  = chem(i,k,j,p_tracer_26)       &
+                     +emis_ant(i,k,j,p_e_tracer_26)*conv
+                chem(i,k,j,p_tracer_27)  = chem(i,k,j,p_tracer_27)       &
+                     +emis_ant(i,k,j,p_e_tracer_27)*conv
+                chem(i,k,j,p_tracer_28)  = chem(i,k,j,p_tracer_28)       &
+                     +emis_ant(i,k,j,p_e_tracer_28)*conv
+                chem(i,k,j,p_tracer_29)  = chem(i,k,j,p_tracer_29)       &
+                     +emis_ant(i,k,j,p_e_tracer_29)*conv
+                chem(i,k,j,p_tracer_30)  = chem(i,k,j,p_tracer_30)       &
+                     +emis_ant(i,k,j,p_e_tracer_30)*conv
+                chem(i,k,j,p_tracer_31)  = chem(i,k,j,p_tracer_31)       &
+                     +emis_ant(i,k,j,p_e_tracer_31)*conv
+                chem(i,k,j,p_tracer_32)  = chem(i,k,j,p_tracer_32)       &
+                     +emis_ant(i,k,j,p_e_tracer_32)*conv
+                chem(i,k,j,p_tracer_ens) = chem(i,k,j,p_tracer_1  )      &
+                                         + chem(i,k,j,p_tracer_2  )      &
+                                         + chem(i,k,j,p_tracer_3  )      &
+                                         + chem(i,k,j,p_tracer_4  )      &
+                                         + chem(i,k,j,p_tracer_5  )      &
+                                         + chem(i,k,j,p_tracer_6  )      &
+                                         + chem(i,k,j,p_tracer_7  )      &
+                                         + chem(i,k,j,p_tracer_8  )      &
+                                         + chem(i,k,j,p_tracer_9  )      &
+                                         + chem(i,k,j,p_tracer_10 )      &
+                                         + chem(i,k,j,p_tracer_11 )      &
+                                         + chem(i,k,j,p_tracer_12 )      &
+                                         + chem(i,k,j,p_tracer_13 )      &
+                                         + chem(i,k,j,p_tracer_14 )      &
+                                         + chem(i,k,j,p_tracer_15 )      &
+                                         + chem(i,k,j,p_tracer_16 )      &
+                                         + chem(i,k,j,p_tracer_17 )      &
+                                         + chem(i,k,j,p_tracer_18 )      &
+                                         + chem(i,k,j,p_tracer_19 )      &
+                                         + chem(i,k,j,p_tracer_20 )      &   
+                                         + chem(i,k,j,p_tracer_21 )      &
+                                         + chem(i,k,j,p_tracer_22 )      &
+                                         + chem(i,k,j,p_tracer_23 )      &
+                                         + chem(i,k,j,p_tracer_24 )      &
+                                         + chem(i,k,j,p_tracer_25 )      &
+                                         + chem(i,k,j,p_tracer_26 )      &
+                                         + chem(i,k,j,p_tracer_27 )      &
+                                         + chem(i,k,j,p_tracer_28 )      &
+                                         + chem(i,k,j,p_tracer_29 )      &
+                                         + chem(i,k,j,p_tracer_30 )      &
+                                         + chem(i,k,j,p_tracer_31 )      &
+                                         + chem(i,k,j,p_tracer_32 )         
+             end do
+          end do
+       end do
+       !!! do j=jts,jte
+       !!!    do i=its,ite
+       !!!       do k=kts,kte
+       !!!          chem(i,k,j,p_tracer_1)   =  chem(i,k,j,p_tracer_1)  * emis_ant(i,kts,j,p_ef_tracer_1 ) 
+       !!!          if(i.eq.ite.and.j.eq.jte.and.k.eq.kts) then
+       !!!            write(message,'("check i,kts,j (ef) = ",3i8)') i,kts,j 
+       !!!            call wrf_debug(15,message)
+       !!!            write(message,'("check emis_ant (ef) = ",f12.5)') emis_ant(i,kts,j,p_ef_tracer_1) 
+       !!!            call wrf_debug(15,message)
+       !!!            write(message,'("check emis_ant (ef) = ",f12.5)') emis_ant(i,kts,j,p_ef_tracer_2) 
+       !!!            call wrf_debug(15,message)
+       !!!          endif 
+       !!!          chem(i,k,j,p_tracer_2)   =  chem(i,k,j,p_tracer_2)  * emis_ant(i,kts,j,p_ef_tracer_2 )  
+       !!!          chem(i,k,j,p_tracer_3)   =  chem(i,k,j,p_tracer_3)  * emis_ant(i,kts,j,p_ef_tracer_3 )  
+       !!!          chem(i,k,j,p_tracer_4)   =  chem(i,k,j,p_tracer_4)  * emis_ant(i,kts,j,p_ef_tracer_4 )  
+       !!!          chem(i,k,j,p_tracer_5)   =  chem(i,k,j,p_tracer_5)  * emis_ant(i,kts,j,p_ef_tracer_5 )  
+       !!!          chem(i,k,j,p_tracer_6)   =  chem(i,k,j,p_tracer_6)  * emis_ant(i,kts,j,p_ef_tracer_6 )  
+       !!!          chem(i,k,j,p_tracer_7)   =  chem(i,k,j,p_tracer_7)  * emis_ant(i,kts,j,p_ef_tracer_7 )  
+       !!!          chem(i,k,j,p_tracer_8)   =  chem(i,k,j,p_tracer_8)  * emis_ant(i,kts,j,p_ef_tracer_8 )  
+       !!!          chem(i,k,j,p_tracer_9)   =  chem(i,k,j,p_tracer_9)  * emis_ant(i,kts,j,p_ef_tracer_9 )  
+       !!!          chem(i,k,j,p_tracer_10)  =  chem(i,k,j,p_tracer_10) * emis_ant(i,kts,j,p_ef_tracer_10)  
+       !!!          chem(i,k,j,p_tracer_11)  =  chem(i,k,j,p_tracer_11) * emis_ant(i,kts,j,p_ef_tracer_11)  
+       !!!          chem(i,k,j,p_tracer_12)  =  chem(i,k,j,p_tracer_12) * emis_ant(i,kts,j,p_ef_tracer_12)  
+       !!!          chem(i,k,j,p_tracer_13)  =  chem(i,k,j,p_tracer_13) * emis_ant(i,kts,j,p_ef_tracer_13)  
+       !!!          chem(i,k,j,p_tracer_14)  =  chem(i,k,j,p_tracer_14) * emis_ant(i,kts,j,p_ef_tracer_14)  
+       !!!          chem(i,k,j,p_tracer_15)  =  chem(i,k,j,p_tracer_15) * emis_ant(i,kts,j,p_ef_tracer_15)  
+       !!!          chem(i,k,j,p_tracer_16)  =  chem(i,k,j,p_tracer_16) * emis_ant(i,kts,j,p_ef_tracer_16)  
+       !!!          chem(i,k,j,p_tracer_17)  =  chem(i,k,j,p_tracer_17) * emis_ant(i,kts,j,p_ef_tracer_17)  
+       !!!          chem(i,k,j,p_tracer_18)  =  chem(i,k,j,p_tracer_18) * emis_ant(i,kts,j,p_ef_tracer_18)  
+       !!!          chem(i,k,j,p_tracer_19)  =  chem(i,k,j,p_tracer_19) * emis_ant(i,kts,j,p_ef_tracer_19)  
+       !!!          chem(i,k,j,p_tracer_20)  =  chem(i,k,j,p_tracer_20) * emis_ant(i,kts,j,p_ef_tracer_20)  
+       !!!          chem(i,k,j,p_tracer_21)  =  chem(i,k,j,p_tracer_21) * emis_ant(i,kts,j,p_ef_tracer_21)  
+       !!!          chem(i,k,j,p_tracer_22)  =  chem(i,k,j,p_tracer_22) * emis_ant(i,kts,j,p_ef_tracer_22)  
+       !!!          chem(i,k,j,p_tracer_23)  =  chem(i,k,j,p_tracer_23) * emis_ant(i,kts,j,p_ef_tracer_23)  
+       !!!          chem(i,k,j,p_tracer_24)  =  chem(i,k,j,p_tracer_24) * emis_ant(i,kts,j,p_ef_tracer_24)  
+       !!!          chem(i,k,j,p_tracer_25)  =  chem(i,k,j,p_tracer_25) * emis_ant(i,kts,j,p_ef_tracer_25)  
+       !!!          chem(i,k,j,p_tracer_26)  =  chem(i,k,j,p_tracer_26) * emis_ant(i,kts,j,p_ef_tracer_26)  
+       !!!          chem(i,k,j,p_tracer_27)  =  chem(i,k,j,p_tracer_27) * emis_ant(i,kts,j,p_ef_tracer_27)  
+       !!!          chem(i,k,j,p_tracer_28)  =  chem(i,k,j,p_tracer_28) * emis_ant(i,kts,j,p_ef_tracer_28)  
+       !!!          chem(i,k,j,p_tracer_29)  =  chem(i,k,j,p_tracer_29) * emis_ant(i,kts,j,p_ef_tracer_29)  
+       !!!          chem(i,k,j,p_tracer_30)  =  chem(i,k,j,p_tracer_30) * emis_ant(i,kts,j,p_ef_tracer_30)  
+       !!!          !chem(i,k,j,p_tracer_ens) =  chem(i,k,j,p_tracer_ens)* emis_ant(i,kts,j,p_ef_tracer_ens) 
+       !!!       end do
+       !!!    end do
+       !!! end do
+     !endif
+!to2
 !
     CASE(CO2_TRACER,GHG_TRACER)  ! for ghg_tracer package
 

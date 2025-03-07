@@ -383,6 +383,9 @@ SUBROUTINE setup_gasprofile_maps(chem_opt, numgas)
  case (CO2_TRACER,GHG_TRACER)
      call wrf_debug("setup_profile_maps: nothing done for the GHG options")
 
+  case (CHEM_TRACE4)
+     call wrf_debug("setup_profile_maps: nothing done for the CHEM_TRACE4 options")
+
   case default
      call wrf_error_fatal("setup_profile_maps: could not decipher chem_opt value")
 
@@ -745,6 +748,42 @@ SUBROUTINE input_chem_profile (si_grid)
    ELSE IF ( si_grid%chem_opt == CHEM_TRACE2 ) THEN
 !jcr       si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_1 ) = 0.08 \
       si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_1 ) = 1.e-12
+   ELSE IF ( si_grid%chem_opt == CHEM_TRACE4 ) THEN
+!jcr       si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_1 ) = 0.08 \
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_1 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_2 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_3 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_4 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_5 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_6 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_7 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_8 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_9 ) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_10) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_11) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_12) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_13) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_14) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_15) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_16) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_17) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_18) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_19) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_20) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_21) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_22) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_23) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_24) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_25) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_26) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_27) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_28) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_29) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_30) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_31) = 1.e-15
+      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_32) = 1.e-15
+!      si_grid%chem(ims:ime,kms:kme,jms:jme,p_TRACER_1 ) = 0.08
+!to2
    ELSE IF ( si_grid%chem_opt == CHEM_VASH ) THEN
       si_grid%chem(ims:ime,kms:kme,jms:jme,1:numgas ) = 0.
    ELSE IF ( si_grid%chem_opt == CHEM_VOLC ) THEN
@@ -1328,27 +1367,39 @@ SUBROUTINE input_chem_profile (si_grid)
 !jcr       chem = 0.08
 !jcr    endif
 !jcr
-    if( nch .eq. p_tracer_1  ) chem = 1.e-12
-    if( nch .eq. p_tracer_2  ) chem = 1.e-12
-    if( nch .eq. p_tracer_3  ) chem = 1.e-12
-    if( nch .eq. p_tracer_4  ) chem = 1.e-12
-    if( nch .eq. p_tracer_5  ) chem = 1.e-12
-    if( nch .eq. p_tracer_6  ) chem = 1.e-12
-    if( nch .eq. p_tracer_7  ) chem = 1.e-12
-    if( nch .eq. p_tracer_8  ) chem = 1.e-12
-    if( nch .eq. p_tracer_9  ) chem = 1.e-12
-    if( nch .eq. p_tracer_10 ) chem = 1.e-12
-    if( nch .eq. p_tracer_11 ) chem = 1.e-12
-    if( nch .eq. p_tracer_12 ) chem = 1.e-12
-    if( nch .eq. p_tracer_13 ) chem = 1.e-12
-    if( nch .eq. p_tracer_14 ) chem = 1.e-12
-    if( nch .eq. p_tracer_15 ) chem = 1.e-12
-    if( nch .eq. p_tracer_16 ) chem = 1.e-12
-    if( nch .eq. p_tracer_17 ) chem = 1.e-12
-    if( nch .eq. p_tracer_18 ) chem = 1.e-12
-    if( nch .eq. p_tracer_19 ) chem = 1.e-12
-    if( nch .eq. p_tracer_20 ) chem = 1.e-12
-    if( nch .eq. p_tracer_ens ) chem = 1.e-12
+    if( nch .eq. p_tracer_1  ) chem = 1.e-15
+    if( nch .eq. p_tracer_2  ) chem = 1.e-15
+    if( nch .eq. p_tracer_3  ) chem = 1.e-15
+    if( nch .eq. p_tracer_4  ) chem = 1.e-15
+    if( nch .eq. p_tracer_5  ) chem = 1.e-15
+    if( nch .eq. p_tracer_6  ) chem = 1.e-15
+    if( nch .eq. p_tracer_7  ) chem = 1.e-15
+    if( nch .eq. p_tracer_8  ) chem = 1.e-15
+    if( nch .eq. p_tracer_9  ) chem = 1.e-15
+    if( nch .eq. p_tracer_10 ) chem = 1.e-15
+    if( nch .eq. p_tracer_11 ) chem = 1.e-15
+    if( nch .eq. p_tracer_12 ) chem = 1.e-15
+    if( nch .eq. p_tracer_13 ) chem = 1.e-15
+    if( nch .eq. p_tracer_14 ) chem = 1.e-15
+    if( nch .eq. p_tracer_15 ) chem = 1.e-15
+    if( nch .eq. p_tracer_16 ) chem = 1.e-15
+    if( nch .eq. p_tracer_17 ) chem = 1.e-15
+    if( nch .eq. p_tracer_18 ) chem = 1.e-15
+    if( nch .eq. p_tracer_19 ) chem = 1.e-15
+    if( nch .eq. p_tracer_20 ) chem = 1.e-15
+    if( nch .eq. p_tracer_21 ) chem = 1.e-15
+    if( nch .eq. p_tracer_22 ) chem = 1.e-15
+    if( nch .eq. p_tracer_23 ) chem = 1.e-15
+    if( nch .eq. p_tracer_24 ) chem = 1.e-15
+    if( nch .eq. p_tracer_25 ) chem = 1.e-15
+    if( nch .eq. p_tracer_26 ) chem = 1.e-15
+    if( nch .eq. p_tracer_27 ) chem = 1.e-15
+    if( nch .eq. p_tracer_28 ) chem = 1.e-15
+    if( nch .eq. p_tracer_29 ) chem = 1.e-15
+    if( nch .eq. p_tracer_30 ) chem = 1.e-15
+    if( nch .eq. p_tracer_31 ) chem = 1.e-15
+    if( nch .eq. p_tracer_32 ) chem = 1.e-15
+    if( nch .eq. p_tracer_ens ) chem = 1.e-15
 !jcr
 
 
@@ -1705,6 +1756,12 @@ END SUBROUTINE bdy_chem_value_ghg
           i_bdy_method = 5
       else if (config_flags%chem_opt == CHEM_TRACE2) then
           i_bdy_method = 5
+!to2
+      !else if (config_flags%chem_opt == CHEM_TRACE3) then
+      !    i_bdy_method = 5
+      else if (config_flags%chem_opt == CHEM_TRACE4) then
+          i_bdy_method = 5
+!to2
       else if (config_flags%chem_opt == GOCART_SIMPLE) then
           i_bdy_method = 7
       else if (config_flags%chem_opt == CB05_SORG_AQ_KPP) then
